@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Petualangan Gigi Sehat - drg. Irsyad</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:linear-gradient(135deg,#a1c4fd,#c2e9fb);min-height:100vh;display:flex;justify-content:center;padding:10px;font-size:15px;-webkit-text-size-adjust:100%}
+.box{background:#fff;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,.25);max-width:600px;width:100%;overflow:hidden}
+.head{background:linear-gradient(90deg,#4facfe,#00f2fe);color:#fff;padding:14px;text-align:center}
+.head h1{font-size:17px}.head p{font-size:11px;margin-top:3px}
+.track{background:#f0f8ff;padding:8px;display:flex;justify-content:space-between;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nd{min-width:32px;height:32px;border-radius:50%;background:#e0e0e0;color:#999;display:flex;justify-content:center;align-items:center;font-size:13px;font-weight:bold;flex-shrink:0}
+.nd.on{background:#4facfe;color:#fff}
+.nd.ok{background:#43e97b;color:#fff}
+.bar{height:5px;background:#e0e0e0}.fill{height:100%;background:#43e97b;width:0;-webkit-transition:width .4s;transition:width .4s}
+.scr{padding:16px;display:none}.scr.on{display:block}
+.ch{text-align:center;font-size:65px;margin:5px 0}
+h2{color:#1e88e5;text-align:center;font-size:16px;margin-bottom:10px}
+.story{background:#fff9c4;border-left:5px solid #fbc02d;border-radius:10px;padding:12px;margin:10px 0;font-size:13px;line-height:1.5;color:#5d4037}
+.story strong{color:#e65100}
+.mat{background:#e3f2fd;border-left:5px solid #1e88e5;border-radius:10px;padding:12px;margin:10px 0;font-size:13px;line-height:1.6;color:#0d47a1}
+.mat strong{color:#b71c1c}
+.tip{background:#e8f5e9;border-left:5px solid #43a047;border-radius:10px;padding:10px;margin:10px 0;font-size:12px;color:#1b5e20}
+button{background:linear-gradient(90deg,#4facfe,#00f2fe);color:#fff;border:none;padding:14px 24px;border-radius:25px;font-size:16px;font-weight:bold;cursor:pointer;display:block;margin:15px auto 0;box-shadow:0 5px 15px rgba(79,172,254,.5);width:100%;max-width:280px;-webkit-appearance:none;appearance:none}
+button:active{transform:scale(.97)}
+.qe{font-size:65px;text-align:center;margin:8px 0}
+.qq{font-size:13px;color:#0d47a1;text-align:center;margin-bottom:14px;font-weight:bold;line-height:1.4}
+.opt{background:#fff;border:2px solid #4facfe;color:#0d47a1;padding:12px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:bold;text-align:left;display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;gap:8px;margin-bottom:8px;width:100%;-webkit-appearance:none;appearance:none}
+.opt .lt{background:#4facfe;color:#fff;min-width:24px;height:24px;border-radius:50%;display:-webkit-box;display:flex;-webkit-box-pack:center;justify-content:center;-webkit-box-align:center;align-items:center;font-size:12px;flex-shrink:0}
+.opt.ok{background:#43e97b;border-color:#2e7d32;color:#fff}
+.opt.ok .lt{background:#1b5e20}
+.opt.no{background:#ff5252;border-color:#b71c1c;color:#fff}
+.opt.no .lt{background:#b71c1c}
+.fb{text-align:center;margin-top:12px;font-size:13px;font-weight:bold;min-height:36px;padding:8px;border-radius:8px}
+.fb.ok{color:#1b5e20;background:#e8f5e9}.fb.no{color:#b71c1c;background:#ffebee}
+.big{font-size:60px;text-align:center;margin:8px 0}
+.stars{font-size:24px;text-align:center;margin:10px 0;letter-spacing:2px}
+.cert{background:linear-gradient(135deg,#fff9c4,#ffecb3);border:3px double #fbc02d;border-radius:12px;padding:14px;margin:10px 0;text-align:center}
+.cert h3{color:#e65100;font-size:14px;margin-bottom:8px}
+.cert p{color:#5d4037;font-size:11px;line-height:1.5}
+.cert .nm{font-size:17px;color:#b71c1c;font-weight:bold;margin:6px 0;display:inline-block;border-bottom:2px dotted #e65100;padding-bottom:2px}
+.inp{width:100%;padding:14px;border:2px solid #4facfe;border-radius:10px;font-size:16px;text-align:center;margin:8px 0;outline:none;-webkit-appearance:none;appearance:none}
+.docwrap{display:-webkit-box;display:flex;-webkit-box-pack:center;justify-content:center;height:200px;margin:10px 0}
+.docsvg{width:160px;height:200px;-webkit-animation:fl 3s ease-in-out infinite;animation:fl 3s ease-in-out infinite}
+@-webkit-keyframes fl{0%,100%{-webkit-transform:translateY(0)}50%{-webkit-transform:translateY(-8px)}}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.docsvg .wv{-webkit-transform-origin:150px 175px;transform-origin:150px 175px;-webkit-animation:wv 1.5s ease-in-out infinite;animation:wv 1.5s ease-in-out infinite}
+@-webkit-keyframes wv{0%,100%{-webkit-transform:rotate(0)}50%{-webkit-transform:rotate(20deg)}}
+@keyframes wv{0%,100%{transform:rotate(0)}50%{transform:rotate(20deg)}}
+.sched{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:12px;padding:14px;margin:10px 0;border:2px dashed #1976d2}
+.sched h3{color:#0d47a1;font-size:14px;margin-bottom:10px;text-align:center}
+.sitem{display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;gap:8px;background:#fff;padding:9px 10px;border-radius:8px;margin-bottom:5px;font-size:12px;color:#0d47a1;font-weight:bold}
+.sitem .bd{background:#1976d2;color:#fff;padding:5px 8px;border-radius:6px;font-size:10px;min-width:60px;text-align:center;flex-shrink:0}
+.sitem .tm{color:#d84315;margin-left:auto;font-size:12px}
+.sitem.off{opacity:.5}.sitem.off .bd{background:#9e9e9e}.sitem.off .tm{color:#757575;font-size:10px}
+</style>
+</head>
+<body>
+<div class="box">
+<div class="head">
+<h1>🦷 Petualangan Gigi Sehat</h1>
+<p>drg. Irsyad - Klinik Dompet Dhuafa Kupang</p>
+</div>
+<div class="track" id="track">
+<div class="nd on" data-m="0">🏠</div>
+<div class="nd" data-m="1">1</div>
+<div class="nd" data-m="2">2</div>
+<div class="nd" data-m="3">3</div>
+<div class="nd" data-m="4">4</div>
+<div class="nd" data-m="5">5</div>
+<div class="nd" data-m="6">6</div>
+<div class="nd" data-m="7">🏆</div>
+</div>
+<div class="bar"><div class="fill" id="fill"></div></div>
+
+<div class="scr on" id="s0">
+<div class="ch">🦷✨</div>
+<h2>Halo, Sahabat Gigi Sehat! 👋</h2>
+<div class="story">Namaku <strong>Gigi Ceria</strong>! Aku tinggal di dalam mulut seorang anak baik hati.<br><br>Tapi... ada masalah! Bakteri jahat ingin merusak rumahku! 😱<br><br>Bantu aku melewati <strong>6 petualangan</strong> untuk mengalahkan bakteri jahat! 🦷✨</div>
+<div class="tip">💡 <strong>Isi namamu dulu ya:</strong><input type="text" class="inp" id="nm" placeholder="Nama kamu..." maxlength="20"></div>
+<button id="btnStart" type="button">Mulai Petualangan 🚀</button>
+</div>
+
+<div class="scr" id="s1">
+<div class="ch">🪥</div>
+<h2>🗺️ Pos 1: Sikat Gigi Pagi & Malam</h2>
+<div class="story"><strong>Cerita:</strong> Pagi hari, Gigi Ceria bangun dengan perasaan tidak nyaman. Sisa makanan semalam masih menempel! 😖<br><br><strong>drg. Irsyad</strong> dari <strong>Klinik Dompet Dhuafa Kupang</strong> berkata: "Waktunya menyikat gigi 2x sehari ya!"</div>
+<div class="mat"><strong>🦷 Fakta Penting:</strong><br>✅ Sikat gigi <strong>2x sehari</strong><br>✅ Durasi minimal <strong>2 menit</strong><br>✅ Sikat <strong>seluruh permukaan gigi</strong><br>✅ Ganti sikat gigi setiap <strong>3 bulan</strong></div>
+<button class="nb" data-n="1" type="button">Aku Paham! Lanjut ➡️</button>
+</div>
+
+<div class="scr" id="s2">
+<div class="ch">😁</div>
+<h2>🗺️ Pos 2: Teknik Menyikat Benar</h2>
+<div class="story">Gigi Ceria bingung, "Bagaimana cara menyikat yang benar?"<br><br><strong>drg. Irsyad</strong> tersenyum: "Sikat dengan gerakan <strong>memutar lembut</strong>!"</div>
+<div class="mat"><strong>🪥 Cara Menyikat Benar:</strong><br>✅ Gerakan <strong>memutar lembut</strong><br>✅ Sikat <strong>luar, dalam, permukaan kunyah</strong><br>✅ Sikat juga <strong>lidah</strong><br>✅ Pakai pasta gigi ber-<strong>fluoride</strong></div>
+<button class="nb" data-n="2" type="button">Aku Paham! Lanjut ➡️</button>
+</div>
+
+<div class="scr" id="s3">
+<div class="ch">🦷⚡</div>
+<h2>🗺️ Pos 3: Scalling Setiap 6 Bulan</h2>
+<div class="story">Di gigi Gigi Ceria ada plak keras yang mengeras menjadi <strong>karang gigi</strong>! 😨<br><br><strong>drg. Irsyad</strong>: "Karang gigi bisa dibersihkan dengan <strong>scalling</strong> di Klinik Dompet Dhuafa Kupang. Lakukan setiap <strong>6 bulan</strong> sekali ya!"</div>
+<div class="mat"><strong>✨ Apa itu Scalling?</strong><br>Prosedur <strong>pembersihan karang gigi</strong> oleh dokter.<br><br>✅ Mencegah <strong>penyakit gusi</strong><br>✅ Mencegah <strong>gigi goyang</strong><br>⏰ Setiap <strong>6 bulan sekali</strong></div>
+<button class="nb" data-n="3" type="button">Aku Paham! Lanjut ➡️</button>
+</div>
+
+<div class="scr" id="s4">
+<div class="ch">🍎</div>
+<h2>🗺️ Pos 4: Makanan Sahabat Gigi</h2>
+<div class="story">Gigi Ceria melihat temannya si Gigi Manis rusak karena terlalu banyak makan permen! 😢<br><br><strong>drg. Irsyad</strong>: "Makan makanan sehat ya!"</div>
+<div class="mat"><strong>🍎 Sahabat Gigi:</strong><br>✅ Buah & sayur<br>✅ Susu & keju<br>✅ Air putih banyak<br><br><strong>🚫 Musuh Gigi:</strong><br>❌ Permen & cokelat<br>❌ Minuman bersoda<br>❌ Makanan lengket</div>
+<button class="nb" data-n="4" type="button">Aku Paham! Lanjut ➡️</button>
+</div>
+
+<div class="scr" id="s5">
+<div class="ch">👨‍⚕️</div>
+<h2>🗺️ Pos 5: Rutin ke Dokter Gigi</h2>
+<div class="story">Gigi Ceria bertemu <strong>drg. Irsyad</strong> di <strong>Klinik Dompet Dhuafa Kupang</strong> untuk <strong>kontrol rutin</strong>.<br><br>"Mencegah lebih baik daripada mengobati!" 😊</div>
+<div class="mat"><strong>👨‍⚕️ Manfaat Kontrol Rutin:</strong><br>✅ Deteksi dini <strong>lubang gigi</strong><br>✅ Cegah masalah <strong>parah</strong><br>✅ Dapat <strong>saran</strong> dokter<br>⏰ Setiap <strong>6 bulan sekali</strong></div>
+<button class="nb" data-n="5" type="button">Aku Paham! Lanjut ➡️</button>
+</div>
+
+<div class="scr" id="s6">
+<div class="ch">🌟</div>
+<h2>🗺️ Pos 6: Kebiasaan Baik Setiap Hari</h2>
+<div class="story">Gigi Ceria sudah tahu rahasianya! Bakteri jahat akan kembali jika tidak dijaga!<br><br><strong>drg. Irsyad</strong>: "Jadikan kebiasaan baik ini sebagai <strong>gaya hidup</strong> ya!"</div>
+<div class="mat"><strong>🌟 Kebiasaan Baik:</strong><br>1️⃣ Sikat gigi <strong>2x sehari</strong><br>2️⃣ <strong>Flossing</strong> 1x sehari<br>3️⃣ <strong>Scalling</strong> setiap 6 bulan<br>4️⃣ Kurangi makanan manis<br>5️⃣ Banyak minum air putih<br>6️⃣ Kontrol dokter gigi rutin</div>
+<button class="nb" data-n="6" type="button">Aku Paham! Lanjut ➡️</button>
+</div>
+
+<div class="scr" id="sq">
+<div class="qe" id="qe">🦷</div>
+<div class="qq" id="qt">Pertanyaan...</div>
+<div id="oc"></div>
+<div class="fb" id="fb"></div>
+</div>
+
+<div class="scr" id="s7">
+<div class="big" id="re">🏆</div>
+<h2 id="rt">Selamat!</h2>
+<div class="stars" id="rs"></div>
+<p id="rx" style="font-size:14px;color:#0d47a1;margin:10px 0;font-weight:bold;text-align:center"></p>
+<div class="cert">
+<h3>🎖️ SERTIFIKAT GIGI SEHAT 🎖️</h3>
+<p>Diberikan kepada:</p>
+<div class="nm" id="cn">Sahabat Gigi</div>
+<p>Karena telah berhasil menyelesaikan<br><strong>"Petualangan Gigi Sehat"</strong><br>dan memahami pentingnya merawat kesehatan gigi! 🦷✨</p>
+<p style="margin-top:10px;font-size:10px">— drg. Irsyad —<br>Klinik Dompet Dhuafa Kupang</p>
+</div>
+<div class="tip" id="rm"></div>
+<div class="docwrap">
+<svg class="docsvg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+<path d="M60 130 Q100 115 140 130 L150 250 L50 250 Z" fill="#ffffff" stroke="#b0bec5" stroke-width="2"/>
+<path d="M85 128 L100 175 L115 128 Z" fill="#1e88e5"/>
+<path d="M85 128 L75 145 L95 175 Z" fill="#f5f5f5" stroke="#b0bec5" stroke-width="1.5"/>
+<path d="M115 128 L125 145 L105 175 Z" fill="#f5f5f5" stroke="#b0bec5" stroke-width="1.5"/>
+<path d="M100 155 L94 168 L100 190 L106 168 Z" fill="#0d47a1"/>
+<rect x="125" y="200" width="18" height="6" fill="#f5f5f5" stroke="#b0bec5"/>
+<path d="M70 130 Q65 160 85 175" stroke="#424242" stroke-width="2.5" fill="none"/>
+<circle cx="88" cy="178" r="7" fill="#616161"/>
+<g class="wv">
+<path d="M140 135 Q165 130 175 105" stroke="#ffffff" stroke-width="20" fill="none" stroke-linecap="round"/>
+<path d="M140 135 Q165 130 175 105" stroke="#b0bec5" stroke-width="2" fill="none"/>
+<circle cx="178" cy="98" r="12" fill="#c68642" stroke="#8d5524" stroke-width="1.5"/>
+<path d="M172 92 Q168 82 172 78" stroke="#c68642" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M177 90 Q175 78 180 75" stroke="#c68642" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M183 92 Q184 82 189 81" stroke="#c68642" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M187 98 Q194 92 197 96" stroke="#c68642" stroke-width="5" fill="none" stroke-linecap="round"/>
+</g>
+<path d="M60 135 Q40 160 45 195" stroke="#ffffff" stroke-width="20" fill="none" stroke-linecap="round"/>
+<path d="M60 135 Q40 160 45 195" stroke="#b0bec5" stroke-width="2" fill="none"/>
+<circle cx="45" cy="198" r="11" fill="#c68642" stroke="#8d5524" stroke-width="1.5"/>
+<rect x="90" y="105" width="20" height="20" fill="#c68642"/>
+<ellipse cx="100" cy="80" rx="40" ry="46" fill="#c68642"/>
+<ellipse cx="100" cy="108" rx="22" ry="10" fill="#b1743a" opacity="0.35"/>
+<ellipse cx="60" cy="82" rx="6" ry="10" fill="#c68642" stroke="#8d5524"/>
+<ellipse cx="140" cy="82" rx="6" ry="10" fill="#c68642" stroke="#8d5524"/>
+<path d="M58 65 Q60 30 100 28 Q140 30 142 65 Q142 50 130 45 Q120 40 100 40 Q80 40 70 45 Q58 50 58 65 Z" fill="#2b1810"/>
+<path d="M62 58 Q75 45 100 44 Q125 45 138 58 Q130 52 100 50 Q70 52 62 58 Z" fill="#1f110a"/>
+<path d="M60 62 Q56 68 60 74" stroke="#1f110a" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M140 62 Q144 68 140 74" stroke="#1f110a" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M72 70 Q82 64 92 69" stroke="#1f110a" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<path d="M108 69 Q118 64 128 70" stroke="#1f110a" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<ellipse cx="82" cy="80" rx="4" ry="5" fill="#3e2723"/>
+<ellipse cx="118" cy="80" rx="4" ry="5" fill="#3e2723"/>
+<circle cx="82" cy="80" r="13" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+<circle cx="118" cy="80" r="13" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+<line x1="95" y1="80" x2="105" y2="80" stroke="#1a1a1a" stroke-width="2.5"/>
+<line x1="69" y1="78" x2="58" y2="76" stroke="#1a1a1a" stroke-width="2.5"/>
+<line x1="131" y1="78" x2="142" y2="76" stroke="#1a1a1a" stroke-width="2.5"/>
+<path d="M100 82 Q98 92 96 95 Q100 98 104 95 Q102 92 100 82" fill="#a15a2a"/>
+<path d="M85 102 Q100 114 115 102" stroke="#5d2c1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<rect x="93" y="103" width="14" height="6" fill="#fff" rx="1"/>
+</svg>
+</div>
+<div class="sched">
+<h3>📅 Jadwal Poli drg. Irsyad</h3>
+<div class="sitem"><span class="bd">SENIN</span><span>🦷 Praktik</span><span class="tm">16.00 – 19.00</span></div>
+<div class="sitem"><span class="bd">SELASA</span><span>🦷 Praktik</span><span class="tm">16.00 – 19.00</span></div>
+<div class="sitem off"><span class="bd">RABU</span><span>Tutup</span><span class="tm">—</span></div>
+<div class="sitem off"><span class="bd">KAMIS</span><span>Tutup</span><span class="tm">—</span></div>
+<div class="sitem"><span class="bd">JUM'AT</span><span>🦷 Praktik</span><span class="tm">16.00 – 19.00</span></div>
+<div class="sitem off"><span class="bd">SABTU</span><span>Tutup</span><span class="tm">—</span></div>
+<div class="sitem off"><span class="bd">MINGGU</span><span>Tutup</span><span class="tm">—</span></div>
+<p style="text-align:center;font-size:11px;color:#0d47a1;margin-top:10px;font-weight:bold">📍 Klinik Dompet Dhuafa Kupang</p>
+</div>
+<div class="tip" style="background:#fff3e0;border-left-color:#ff9800;color:#e65100">🎉 <strong>Terima kasih sudah bermain!</strong><br>Ayo jaga kesehatan gigimu setiap hari! 🦷💙</div>
+<button id="btnRestart" type="button">Main Lagi 🔄</button>
+</div>
+</div>
+
+<script>
+var QUIZ={
+1:[{e:"🪥",q:"Berapa kali sehari kita harus menyikat gigi?",o:["1x sehari","2x sehari","3x seminggu","Jika ingat saja"],a:1,x:"Benar! Sikat gigi 2x sehari! 🌙"},{e:"⏰",q:"Berapa lama waktu ideal menyikat gigi?",o:["10 detik","30 detik","2 menit","10 menit"],a:2,x:"Tepat! Minimal 2 menit! ✨"}],
+2:[{e:"😬",q:"Bagaimana gerakan menyikat gigi yang benar?",o:["Keras bolak-balik","Memutar lembut dari gusi ke gigi","Menekan kuat","Cepat-cepat"],a:1,x:"Betul! Memutar lembut! 🌸"},{e:"👅",q:"Selain gigi, bagian mulut apa yang perlu disikat?",o:["Gusi","Lidah","Pipi","Bibir"],a:1,x:"Hebat! Sikat lidah! 💨"}],
+3:[{e:"⚡",q:"Apa itu scalling?",o:["Memutihkan gigi","Membersihkan karang gigi","Mencabut gigi","Memasang kawat"],a:1,x:"Tepat! Scalling = bersihkan karang gigi! 🦷"},{e:"📅",q:"Berapa bulan sekali kita harus scalling?",o:["1 bulan","3 bulan","6 bulan","2 tahun"],a:2,x:"Benar! Setiap 6 bulan! ⏰"}],
+4:[{e:"🍎",q:"Makanan apa yang baik untuk gigi?",o:["Permen","Apel & sayur","Cokelat","Soda"],a:1,x:"Betul! Buah & sayur! 🍎"},{e:"🚫",q:"Minuman apa yang sebaiknya dikurangi?",o:["Air putih","Susu","Soda","Jus buah"],a:2,x:"Tepat! Soda merusak gigi! 🥤"}],
+5:[{e:"👨‍⚕️",q:"Mengapa perlu kontrol ke dokter gigi meski tidak sakit?",o:["Dapat hadiah","Deteksi dini masalah gigi","Iseng","Tidak perlu"],a:1,x:"Benar! Deteksi dini! 🔍"},{e:"📅",q:"Berapa bulan sekali idealnya kontrol?",o:["1 tahun","6 bulan","3 tahun","5 tahun"],a:1,x:"Hebat! Setiap 6 bulan! 🗓️"}],
+6:[{e:"🌟",q:"Manakah yang BUKAN kebiasaan baik untuk gigi?",o:["Sikat 2x sehari","Kurangi manis","Sering minum soda","Scalling rutin"],a:2,x:"Tepat! Soda musuh gigi! 🚫"},{e:"🦷",q:"Apa untuk membersihkan sela gigi?",o:["Tusuk gigi","Benang gigi (flossing)","Pensil","Kuku"],a:1,x:"Betul! Benang gigi! 🧵"}]};
+
+var score=0,total=0,nama="Sahabat Gigi";
+
+function show(id){
+var all=document.querySelectorAll('.scr');
+for(var i=0;i<all.length;i++)all[i].classList.remove('on');
+var t=document.getElementById(id);
+if(t)t.classList.add('on');
+window.scrollTo(0,0);
+}
+function setTrack(m){
+var ns=document.querySelectorAll('.nd');
+for(var i=0;i<ns.length;i++){
+var n=parseInt(ns[i].getAttribute('data-m'));
+ns[i].classList.remove('on');ns[i].classList.remove('ok');
+if(n<m)ns[i].classList.add('ok');
+if(n===m)ns[i].classList.add('on');
+}
+}
+function setBar(m){document.getElementById('fill').style.width=Math.min((m/7)*100,100)+'%';}
+
+document.getElementById('btnStart').onclick=function(){
+var v=document.getElementById('nm').value;
+nama=v?v:"Sahabat Gigi";
+score=0;total=0;
+setTrack(1);setBar(1);show('s1');
+};
+
+var nbs=document.querySelectorAll('.nb');
+for(var i=0;i<nbs.length;i++){
+nbs[i].onclick=function(){
+var n=parseInt(this.getAttribute('data-n'));
+mulaiKuis(n);
+};
+}
+
+function mulaiKuis(mapNum){
+setTrack(mapNum);setBar(mapNum);
+var qs=QUIZ[mapNum];
+var idx=0,lokal=0;
+show('sq');
+
+function tampil(){
+if(idx>=qs.length){
+score+=lokal;total+=qs.length;
+if(mapNum<6){setTrack(mapNum+1);setBar(mapNum+1);show('s'+(mapNum+1));}
+else{hasil();}
+return;
+}
+var q=qs[idx];
+document.getElementById('qe').textContent=q.e;
+document.getElementById('qt').textContent='Soal '+(idx+1)+'/'+qs.length+': '+q.q;
+document.getElementById('fb').textContent='';
+document.getElementById('fb').className='fb';
+var oc=document.getElementById('oc');
+oc.innerHTML='';
+for(var i=0;i<q.o.length;i++){
+(function(k){
+var b=document.createElement('button');
+b.type='button';
+b.className='opt';
+b.innerHTML='<span class="lt">'+String.fromCharCode(65+k)+'</span><span>'+q.o[k]+'</span>';
+b.onclick=function(){jawab(k,b,q);};
+oc.appendChild(b);
+})(i);
+}
+}
+
+function jawab(pilih,btn,q){
+var all=document.querySelectorAll('.opt');
+for(var i=0;i<all.length;i++)all[i].disabled=true;
+var fb=document.getElementById('fb');
+if(pilih===q.a){btn.classList.add('ok');lokal++;fb.textContent='✅ '+q.x;fb.className='fb ok';}
+else{btn.classList.add('no');all[q.a].classList.add('ok');fb.textContent='❌ '+q.x;fb.className='fb no';}
+setTimeout(function(){idx++;tampil();},1700);
+}
+
+tampil();
+}
+
+function hasil(){
+setTrack(7);setBar(7);show('s7');
+var persen=total>0?(score/total)*100:0;
+var emo,ti,bn,ps;
+if(persen>=90){emo='🏆';ti='LUAR BIASA!';bn='⭐⭐⭐⭐⭐';ps='Kamu sangat paham cara merawat gigi!
